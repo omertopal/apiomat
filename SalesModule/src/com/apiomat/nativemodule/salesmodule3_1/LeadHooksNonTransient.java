@@ -55,9 +55,11 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public void afterPost( com.apiomat.nativemodule.salesmodule3_1.Lead obj, com.apiomat.nativemodule.Request r )
     {
-    	String salesmanUsername = r.getUserEmail();
+    	String salesmanUsername = "";
     	
-    	List<Salesman> salesmanList =   this.model.findByNames(Salesman.class,"userName == '"+salesmanUsername+"'", r);
+    	this.model.log(  r.getUserEmail(), false ); 
+    	
+    	List<Salesman> salesmanList =   this.model.findByNames(Salesman.class,"userName == \""+salesmanUsername+"\"", r);
     	
 //    	final IModel[] result = SalesModule3_1.AOM.findByNames( r.getApplicationName( ), 
 //    			Salesman.MODULE_NAME, Salesman.MODEL_NAME, "userName == "+salesmanUsername, r ); 
