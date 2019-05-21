@@ -63,7 +63,7 @@ public class SalesStatisticHooksTransient<T extends com.apiomat.nativemodule.sal
     }
     
     public Salesman getSalesman(com.apiomat.nativemodule.Request r ) {
-    	String salesmanUsername = r.getUserEmail();
+    	String salesmanUsername = "omer";// r.getUserEmail();
     	
     	this.model.log(  r.getUserEmail(), false ); 
     	
@@ -85,7 +85,6 @@ public class SalesStatisticHooksTransient<T extends com.apiomat.nativemodule.sal
     {
     	List<SalesStatistic> statList = new ArrayList<SalesStatistic>();
     	
-    	// 
     	Salesman salesman = getSalesman(r);
     	
     	SalesStatistic stats = new SalesStatistic();
