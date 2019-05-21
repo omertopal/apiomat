@@ -55,7 +55,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public void afterPost( com.apiomat.nativemodule.salesmodule3_1.Lead obj, com.apiomat.nativemodule.Request r )
     {
-    	String salesmanUsername = "";
+    	String salesmanUsername = "omer";
     	
     	this.model.log(  r.getUserEmail(), false ); 
     	
@@ -67,7 +67,11 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     	if(salesmanList.size()>0) {
     		//error
     	}
-    	Salesman salesMan = (Salesman) salesmanList.get(0);
+    	Salesman salesMan = null;
+    	if(salesmanList.size()>0) {
+    		salesMan = (Salesman) salesmanList.get(0);
+    	}
+    	
 //    	salesMan.getListOfLeads().add(obj);
     	salesMan.postListOfLeads(obj);
     }

@@ -38,8 +38,8 @@ import com.apiomat.nativemodule.salesmodule3_1.*;
 @com.apiomat.nativemodule.Model( moduleName = "SalesModule3_1",
     hooksClassNameTransient = "com.apiomat.nativemodule.salesmodule3_1.SalesmanHooksTransient", 
     hooksClassNameNonTransient = "com.apiomat.nativemodule.salesmodule3_1.SalesmanHooksNonTransient", 
-    isTransient = false,     requiredUserRoleCreate=com.apiomat.nativemodule.UserRole.Guest, requiredUserRoleRead=com.apiomat.nativemodule.UserRole.User,
-    requiredUserRoleWrite=com.apiomat.nativemodule.UserRole.Owner, restrictResourceAccess=false,    allowedRolesCreate={}, allowedRolesRead={},
+    isTransient = false,     requiredUserRoleCreate=com.apiomat.nativemodule.UserRole.Guest, requiredUserRoleRead=com.apiomat.nativemodule.UserRole.Guest,
+    requiredUserRoleWrite=com.apiomat.nativemodule.UserRole.Guest, restrictResourceAccess=false,    allowedRolesCreate={}, allowedRolesRead={},
     allowedRolesWrite={}, allowedRolesGrant={}, 
     roleClassesMap={})
 public class Salesman extends com.apiomat.nativemodule.basics.User
