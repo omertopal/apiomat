@@ -50,7 +50,7 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     {
     	obj.setLastVisit(new Date());
     }
-
+    
 
     @Override
     public void afterPost( com.apiomat.nativemodule.salesmodule3_1.Lead obj, com.apiomat.nativemodule.Request r )

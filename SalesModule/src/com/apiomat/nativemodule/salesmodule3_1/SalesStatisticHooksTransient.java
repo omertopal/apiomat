@@ -23,6 +23,10 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.apiomat.nativemodule.salesmodule3_1;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
 
@@ -57,11 +61,40 @@ public class SalesStatisticHooksTransient<T extends com.apiomat.nativemodule.sal
     {
         return null;
     }
+    
+    public Salesman getSalesman(com.apiomat.nativemodule.Request r ) {
+    	String salesmanUsername = r.getUserEmail();
+    	
+    	this.model.log(  r.getUserEmail(), false ); 
+    	
+    	List<Salesman> salesmanList =   this.model.findByNames(Salesman.class,"userName == \""+salesmanUsername+"\"", r);
+    	
+    	
+    	if(salesmanList.size()>0) {
+    		//error
+    	}
+    	Salesman salesMan = null;
+    	if(salesmanList.size()>0) {
+    		salesMan = (Salesman) salesmanList.get(0);
+    	}
+    	return salesMan;
+    }
 
     @Override
     public java.util.List<com.apiomat.nativemodule.salesmodule3_1.SalesStatistic> doGetAll( String query, com.apiomat.nativemodule.Request r )
     {
-        return null;
+    	List<SalesStatistic> statList = new ArrayList<SalesStatistic>();
+    	
+    	// 
+    	Salesman salesman = getSalesman(r);
+    	
+    	SalesStatistic stats = new SalesStatistic();
+    	
+    	Long totalScore  = salesman.getListOfLeads().stream().mapToLong(Lead::getScore).sum();
+    	
+    	stats.setTotalScore(totalScore);
+    	statList.add(stats);
+        return statList;
     }
 
     @Override
