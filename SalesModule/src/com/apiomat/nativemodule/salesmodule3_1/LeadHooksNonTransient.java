@@ -23,10 +23,8 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.apiomat.nativemodule.salesmodule3_1;
-import com.apiomat.nativemodule.*;
-import com.apiomat.nativemodule.basics.User;
-
-import com.apiomat.nativemodule.salesmodule3_1.*;
+import java.util.Date;
+import java.util.List;
 
 /**
 * Generated class for hooks on your Lead data model
@@ -50,12 +48,26 @@ public class LeadHooksNonTransient<T extends com.apiomat.nativemodule.salesmodul
     @Override
     public void beforePost( com.apiomat.nativemodule.salesmodule3_1.Lead obj, com.apiomat.nativemodule.Request r )
     {
+    	obj.setLastVisit(new Date());
     }
 
 
     @Override
     public void afterPost( com.apiomat.nativemodule.salesmodule3_1.Lead obj, com.apiomat.nativemodule.Request r )
     {
+    	String salesmanUsername = r.getUserEmail();
+    	
+    	List<Salesman> salesmanList =   this.model.findByNames(Salesman.class,"userName == '"+salesmanUsername+"'", r);
+    	
+//    	final IModel[] result = SalesModule3_1.AOM.findByNames( r.getApplicationName( ), 
+//    			Salesman.MODULE_NAME, Salesman.MODEL_NAME, "userName == "+salesmanUsername, r ); 
+    	
+    	if(salesmanList.size()>0) {
+    		//error
+    	}
+    	Salesman salesMan = (Salesman) salesmanList.get(0);
+//    	salesMan.getListOfLeads().add(obj);
+    	salesMan.postListOfLeads(obj);
     }
 
     @Override
