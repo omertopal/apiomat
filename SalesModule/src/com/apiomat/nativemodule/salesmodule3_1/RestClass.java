@@ -89,6 +89,8 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
         final com.apiomat.nativemodule.Request request = this.getAOMRequest( );
         // extract auth information from the request object if needed
         System.out.println( request );
+        
+        SalesModule3_1.AOM.checkAccountRequestCredentials(request);
          
         List<IModel<?>> leads = Arrays.asList(SalesModule3_1.AOM.findByNames( request.getApplicationName( ), 
     			Lead.MODULE_NAME, Lead.MODEL_NAME, "", request ));
