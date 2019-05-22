@@ -24,6 +24,7 @@
  */
 package com.apiomat.nativemodule.salesmodule3_1;
 
+import com.apiomat.nativemodule.NativeModuleConfig.Type;
 
 /**
  * Generated class for starting and stopping your module. 
@@ -42,15 +43,27 @@ public class SalesModule3_1 implements com.apiomat.nativemodule.IModule
     
     // Sample for a module configuration
     //
-    // @com.apiomat.nativemodule.NativeModuleConfig(
-    //     datatype = Type.TEXT,
-    //     example = "localhost",
-    //     title = "Server Hostname",
-    //     info = "Hostname of the server",
-    //     defaultValue = "localhost",
-    //     notifyAllNodes = true,
-    //     order = 1 )
-    // public static String HOSTNAME = "SalesModule3_1_hostname";
+     @com.apiomat.nativemodule.NativeModuleConfig(
+         datatype = Type.TEXT,
+         example = "localhost",
+         title = "Server Hostname",
+         info = "Hostname of the server",
+         defaultValue = "localhost",
+         notifyAllNodes = true,
+         order = 1 )
+     public static String HOSTNAME = "SalesModule3_1_hostname";
+     
+     @com.apiomat.nativemodule.NativeModuleConfig(
+             datatype = Type.TEXT,
+             example = "mail domain",
+             title = "mail domain",
+             info = "mail domain",
+             defaultValue = "@gmail.com",
+             notifyAllNodes = true,
+             order = 1 )
+         public static String VALID_EMAIL_DOMAIN = "SalesModule3_1_emailDomain";
+     
+     
     //
     // Read @NativeModuleConfig values using the following code:
     // SalesModule3_1.APP_CONFIG_PROXY.getConfigValue( SalesModule3_1.HOSTNAME, appName, system );

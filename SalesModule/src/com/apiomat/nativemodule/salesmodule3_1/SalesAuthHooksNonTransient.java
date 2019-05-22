@@ -178,7 +178,7 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     public boolean auth( String httpVerb, String moduleName, String modelName, String modelForeignId,
     		String userNameOrEmail, String passwordOrToken, com.apiomat.nativemodule.Request request ) {
     	
-    	if (userNameOrEmail.endsWith("@gmail1.com")) 
+    	if (userNameOrEmail.endsWith(SalesModule3_1.VALID_EMAIL_DOMAIN))
     		return true;
     	
     	return false;
