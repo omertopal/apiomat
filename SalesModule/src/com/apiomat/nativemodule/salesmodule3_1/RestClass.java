@@ -97,7 +97,7 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
         LongSummaryStatistics stats  = leads.parallelStream().map(c -> (Lead) c).mapToLong(Lead::getScore).summaryStatistics();
         
         
-        this.model.log(  "Avarage:" + stats.getAverage(), false ); 
+        System.out.println(  "Avarage:" + stats.getAverage() ); 
         		
 
         return javax.ws.rs.core.Response.ok(  stats.getAverage()+"" ).type( javax.ws.rs.core.MediaType.TEXT_PLAIN ).build( );
