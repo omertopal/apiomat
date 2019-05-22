@@ -61,7 +61,7 @@ public class SalesModule3_1 implements com.apiomat.nativemodule.IModule
              defaultValue = "@gmail.com",
              notifyAllNodes = true,
              order = 1 )
-         public static String VALID_EMAIL_DOMAIN = "@gmail.com";
+         public static String VALID_EMAIL_DOMAIN = "SalesModule3_1_emailDomain";
      
      
     //
