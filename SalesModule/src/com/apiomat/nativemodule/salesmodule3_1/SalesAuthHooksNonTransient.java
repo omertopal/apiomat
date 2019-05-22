@@ -179,10 +179,12 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     		String userNameOrEmail, String passwordOrToken, com.apiomat.nativemodule.Request request ) {
     	
     	this.model.log("userNameOrEmail:"+userNameOrEmail);
+    	
+    	this.model.log("userNameOrEmail:"+request.getUserEmail());
     	String validEMailDOmain = (String) SalesModule3_1.APP_CONFIG_PROXY.getConfigValue( SalesModule3_1.HOSTNAME, request.getApplicationName( ), request.getSystem() );
     	
     	this.model.log("validEMailDOmain:"+validEMailDOmain);
-    	if (userNameOrEmail.endsWith(validEMailDOmain))
+    	if (request.getUserEmail().endsWith(validEMailDOmain))
     		return true;
     	
     	return false;
