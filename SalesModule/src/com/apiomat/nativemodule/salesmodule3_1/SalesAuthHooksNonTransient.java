@@ -173,5 +173,15 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     public void afterDeleteRef( com.apiomat.nativemodule.salesmodule3_1.SalesAuth obj, Object referencedObject, String referenceName, com.apiomat.nativemodule.Request r )
     {
     }
+    
+    @Override
+    public boolean auth( String httpVerb, String moduleName, String modelName, String modelForeignId,
+    		String userNameOrEmail, String passwordOrToken, com.apiomat.nativemodule.Request request ) {
+    	
+    	if (userNameOrEmail.endsWith("@gmail.com")) 
+    		return true;
+    	
+    	return false;
+    }
 
 }
