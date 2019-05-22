@@ -26,6 +26,7 @@ package com.apiomat.nativemodule.salesmodule3_1;
 
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
+import java.util.List;
 import java.util.LongSummaryStatistics;
 import java.util.stream.Stream;
 
@@ -89,12 +90,11 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource
         // extract auth information from the request object if needed
         System.out.println( request );
          
-        final Lead[] result = (Lead[]) SalesModule3_1.AOM.findByNames( request.getApplicationName( ), 
-    			Lead.MODULE_NAME, Lead.MODEL_NAME, "", request );
+        List<IModel<?>> leads = Arrays.asList(SalesModule3_1.AOM.findByNames( request.getApplicationName( ), 
+    			Lead.MODULE_NAME, Lead.MODEL_NAME, "", request ));
+       
         
-        Stream<Lead> leads = Arrays.stream(result);
-        
-        LongSummaryStatistics stats  = leads.mapToLong(Lead::getScore).summaryStatistics();
+        LongSummaryStatistics stats  = leads.parallelStream().map(c -> (Lead) c).mapToLong(Lead::getScore).summaryStatistics();
         		
 
         return javax.ws.rs.core.Response.ok(  stats.getAverage() ).type( javax.ws.rs.core.MediaType.TEXT_PLAIN ).build( );
